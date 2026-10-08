@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+/* =========================================================
+   DRIVESHARE DESIGN SYSTEM & COLOR THEMES (DARK + LIGHT)
+========================================================= */
+
+:root,
+.theme-dark {
+  /* Dark Automotive Theme (Default) */
+  --bg-base: #080D16;
+  --bg-main: #0C121F;
+  --bg-surface: #121A29;
+  --bg-surface-hover: #172235;
+  --bg-surface-elevated: #19263B;
+  --blue-teal: #326071;
+  --teal-muted: #486F7E;
+  --cyan-accent: #70B6D0;
+  --cyan-glow: rgba(112, 182, 208, 0.25);
+  --cyan-dim: rgba(112, 182, 208, 0.12);
+  --primary-text: #E8F0F7;
+  --secondary-text: #94A4B5;
+  --text-muted: #627488;
+  --border-color: #26384A;
+  --border-glow: rgba(112, 182, 208, 0.35);
+  --card-bg: rgba(18, 26, 41, 0.85);
+  --card-bg-solid: #121A29;
+  --input-bg: #0C121F;
+  --shadow-main: 0 20px 50px rgba(4, 7, 12, 0.6);
+  --glass-bg: rgba(12, 18, 31, 0.88);
+
+  --font-main: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.theme-light {
+  /* Light Automotive Theme (Executive Chauffeur Platform) */
+  --bg-base: #F1F5F7;
+  --bg-main: #FFFFFF;
+  --bg-surface: #FFFFFF;
+  --bg-surface-hover: #E8EFF3;
+  --bg-surface-elevated: #E8EFF3;
+  --blue-teal: #326071;
+  --teal-muted: #486F7E;
+  --cyan-accent: #326071;
+  --cyan-glow: rgba(50, 96, 113, 0.14);
+  --cyan-dim: rgba(50, 96, 113, 0.07);
+  --primary-text: #101820;
+  --secondary-text: #52616D;
+  --text-muted: #6C7D8A;
+  --border-color: #D3DEE6;
+  --border-glow: rgba(50, 96, 113, 0.22);
+  --card-bg: #FFFFFF;
+  --card-bg-solid: #FFFFFF;
+  --input-bg: #E8EFF3;
+  --shadow-main: 0 10px 30px rgba(16, 24, 32, 0.06);
+  --glass-bg: rgba(255, 255, 255, 0.90);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--bg-base);
+  color: var(--primary-text);
+  font-family: var(--font-main);
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-base);
+  color: var(--primary-text);
+  line-height: 1.5;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--teal-muted);
+}
+
+::selection {
+  background: var(--blue-teal);
+  color: #FFFFFF;
+}
+
+/* Typography & Technical Utility Classes */
+.tech-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cyan-accent);
+}
+
+.mono-number {
+  font-family: var(--font-mono);
+  letter-spacing: -0.02em;
+}
+
+/* Automotive Badges */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: var(--cyan-dim);
+  border: 1px solid var(--border-color);
+  color: var(--cyan-accent);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #70B6D0;
+  box-shadow: 0 0 8px #70B6D0;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.theme-light .status-dot {
+  background: #326071;
+  box-shadow: 0 0 6px rgba(50, 96, 113, 0.35);
+}
+
+/* Buttons */
+.ds-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #326071 0%, #264b59 100%);
+  color: #FFFFFF;
+  border: 1px solid #70B6D0;
+  padding: 14px 26px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  box-shadow: 0 0 20px rgba(112, 182, 208, 0.2);
+  text-decoration: none;
+}
+
+.ds-btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #3d758a 0%, #326071 100%);
+  border-color: #8fd0e8;
+  box-shadow: 0 0 30px rgba(112, 182, 208, 0.4);
+  transform: translateY(-1px);
+}
+
+.theme-light .ds-btn-primary {
+  background: #326071;
+  color: #FFFFFF;
+  border: 1px solid #284e5c;
+  box-shadow: 0 4px 14px rgba(50, 96, 113, 0.28);
+}
+
+.theme-light .ds-btn-primary:hover:not(:disabled) {
+  background: #284e5c;
+  border-color: #1e3b46;
+  box-shadow: 0 6px 22px rgba(50, 96, 113, 0.4);
+  transform: translateY(-1px);
+}
+
+.ds-btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.ds-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--bg-surface);
+  color: var(--primary-text);
+  border: 1px solid var(--border-color);
+  padding: 14px 24px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  text-decoration: none;
+}
+
+.ds-btn-secondary:hover:not(:disabled) {
+  background: var(--bg-surface-hover);
+  border-color: var(--teal-muted);
+  color: var(--primary-text);
+  transform: translateY(-1px);
+}
+
+.theme-light .ds-btn-secondary {
+  background: #FFFFFF;
+  color: #101820;
+  border: 1px solid #C9D6DE;
+  box-shadow: 0 2px 8px rgba(16, 24, 32, 0.06);
+}
+
+.theme-light .ds-btn-secondary:hover:not(:disabled) {
+  background: #F8FAFB;
+  border-color: #326071;
+  color: #101820;
+  box-shadow: 0 4px 14px rgba(16, 24, 32, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Glass Panels */
+.glass-panel {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+}
+
+/* Animations */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(0.8deg); }
+}
+
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes pulseRadar {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-float-gentle {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+@keyframes heroVehicleFloat {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.006);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .floating-hero-card,
+  .floating-driver-bubble,
+  .hero-vehicle-stage {
+    transform: none !important;
+  }
+}
